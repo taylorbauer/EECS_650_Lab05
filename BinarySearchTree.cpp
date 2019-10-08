@@ -73,20 +73,22 @@ void BinarySearchTree::preorder(BinaryNode* root) {
     }
 }
 
-void BinarySearchTree::inorder() {
+void BinarySearchTree::inorder(bool leafFlag) {
     cout << "Printing in in-order: ";
-    inorder(m_root);
+    inorder(m_root, leafFlag);
     cout << '\n';
 }
 
-void BinarySearchTree::inorder(BinaryNode* root) {
+void BinarySearchTree::inorder(BinaryNode* root, bool leafFlag) {
     if (root == nullptr) {
         return;
     }
     else {
-        inorder(root->getLeft());
-        cout << root->getValue() << ' ';
-        inorder(root->getRight());
+        inorder(root->getLeft(), leafFlag);
+        if (leafFlag == false || root->childrenCount() == 0){
+            cout << root->getValue() << ' ';
+        }
+        inorder(root->getRight(), leafFlag);
     }
 }
 

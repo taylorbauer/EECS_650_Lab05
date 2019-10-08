@@ -8,7 +8,7 @@ class BinarySearchTree{
         void insert(char value);
         bool isEmpty();
         void preorder();
-        void inorder();
+        void inorder(bool leafFlag);
         void postorder();
         void levelOrder(bool leafFlag);
         int getHeight();
@@ -19,7 +19,7 @@ class BinarySearchTree{
         BinaryNode* m_root;
         void insert(BinaryNode* root, BinaryNode* newNode);
         void preorder(BinaryNode* root);
-        void inorder(BinaryNode* root);
+        void inorder(BinaryNode* root, bool leafFlag);
         void postorder(BinaryNode* root);
         void levelOrder(bool leafFlag, BinaryNode* node, int level);
         int getHeight(BinaryNode* root);

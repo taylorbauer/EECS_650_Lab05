@@ -46,6 +46,11 @@ void Menu::run() {
                 cout << "The node containing \'" << searchKey << "\' IS NOT a leaf.\n"; 
             }
         }
+        else if (selection == 4) {
+            cout << "Here are the leaf nodes from left to right:\n";
+            m_tree.inorder(true);
+            cout << endl;
+        }
         else if (selection == 5) {
             cout << "The height of the tree is " << m_tree.getHeight() << ".\n";
         }
@@ -56,7 +61,7 @@ void Menu::run() {
             m_tree.postorder();
         }
         else if (selection == 8) {
-            m_tree.inorder();
+            m_tree.inorder(false);
         }
         else if (selection == 9) {
             m_tree.levelOrder(false);
