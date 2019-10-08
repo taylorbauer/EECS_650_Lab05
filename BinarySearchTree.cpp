@@ -159,3 +159,41 @@ bool BinarySearchTree::search(char key, BinaryNode* root) {
         
     }
 }
+
+BinaryNode* BinarySearchTree::searchReturnNode(char key, BinaryNode* root) {
+    if (root->getValue() == key) {
+        return root;
+    }
+    else {
+        if (root->getLeft() != nullptr){
+            BinaryNode* leftResult = searchReturnNode(key, root->getLeft());
+            if (leftResult != nullptr) {
+                return leftResult;
+            }
+            else {
+                if (root->getRight() != nullptr) {
+                    BinaryNode* rightResult = searchReturnNode(key, root->getRight());
+                    if (rightResult != nullptr) {
+                        return rightResult;
+                    }
+                }
+            }
+        }
+        return nullptr;
+    }
+}
+
+bool BinarySearchTree::isLeaf(char key) {
+    if (!search(key, m_root)) {
+        return false;
+    }
+    else {
+        BinaryNode* nodeInQuestion = searchReturnNode(key, m_root);
+        if (nodeInQuestion->childrenCount() == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+}

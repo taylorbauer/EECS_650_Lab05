@@ -35,6 +35,17 @@ void Menu::run() {
             m_tree.insert(insertion);
             cout << "The character \'" << insertion << "\' successfully inserted!\n";
         }
+        else if (selection == 3) {
+            char searchKey = ' ';
+            cout << "Which node would you like to check (single character only please)? ";
+            cin >> searchKey;
+            if (m_tree.isLeaf(searchKey)) {
+                cout << "The node containing \'" << searchKey << "\' IS a leaf.\n";
+            }
+            else {
+                cout << "The node containing \'" << searchKey << "\' IS NOT a leaf.\n"; 
+            }
+        }
         else if (selection == 5) {
             cout << "The height of the tree is " << m_tree.getHeight() << ".\n";
         }
@@ -55,10 +66,10 @@ void Menu::run() {
             cout << "What character would you like to search for? ";
             cin >> searchKey;
             if (m_tree.search(searchKey)) {
-                cout << "The character \'" << searchKey << "\' was found on the tree";
+                cout << "The character \'" << searchKey << "\' was found on the tree\n";
             }
             else {
-                cout << "The character \'" << searchKey << "\' was NOT found on the tree";
+                cout << "The character \'" << searchKey << "\' was NOT found on the tree\n";
             }
         }
         else {

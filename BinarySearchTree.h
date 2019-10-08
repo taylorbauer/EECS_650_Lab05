@@ -13,6 +13,8 @@ class BinarySearchTree{
         void levelOrder(bool leafFlag);
         int getHeight();
         bool search(char key);
+        bool isLeaf(char key);
+
     private:
         BinaryNode* m_root;
         void insert(BinaryNode* root, BinaryNode* newNode);
@@ -22,6 +24,8 @@ class BinarySearchTree{
         void levelOrder(bool leafFlag, BinaryNode* node, int level);
         int getHeight(BinaryNode* root);
         bool search(char key, BinaryNode* root);
+        BinaryNode* searchReturnNode(char key, BinaryNode* root);
+
 };
 
 #endif
