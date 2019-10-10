@@ -1,3 +1,9 @@
+//
+//  Author: Taylor Bauer
+//  Date: October 7, 2019
+//
+
+
 #include "BinarySearchTree.h"
 #include "BinaryNode.h"
 #include <iostream>
@@ -198,4 +204,39 @@ bool BinarySearchTree::isLeaf(char key) {
             return false;
         }
     }
+}
+
+void BinarySearchTree::remove(char key) {
+    remove(m_root, key);
+}
+
+bool BinarySearchTree::remove(BinaryNode* root, char key) {
+    BinaryNode* toBeDeleted = searchReturnNode(key, m_root);
+    BinaryNode* nonEmptyChild = nullptr;
+    if (isLeaf(key) && toBeDeleted != m_root) {
+        if (toBeDeleted->getParent()->getLeft() == toBeDeleted) {
+            toBeDeleted->getParent()->setLeft(nullptr);
+        }
+        else {
+            toBeDeleted->getParent()->setRight(nullptr);
+        }
+        delete toBeDeleted;
+    }
+    else if (toBeDeleted->childrenCount() == 1 && toBeDeleted != m_root) {
+        if (toBeDeleted->getRight() == nullptr) {
+            nonEmptyChild = toBeDeleted->getLeft();
+        }
+        else {
+            nonEmptyChild = toBeDeleted->getRight();
+        }
+        if (toBeDeleted->getParent()->getLeft() == toBeDeleted) { //AKA, toBeDeleted is the left child of its parent
+            toBeDeleted->getParent()->setLeft(nonEmptyChild);
+        }
+        else {
+            toBeDeleted->getParent()->setRight(nonEmptyChild);
+        }
+        nonEmptyChild->setParent(toBeDeleted->getParent());
+        delete toBeDeleted;
+    }
+    return true;
 }

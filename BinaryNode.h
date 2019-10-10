@@ -1,3 +1,8 @@
+//
+//  Author: Taylor Bauer
+//  Date: September 28, 2019
+//
+
 #ifndef BINARY_NODE_H
 #define BINARY_NODE_H
 

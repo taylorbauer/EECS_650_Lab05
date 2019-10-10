@@ -1,3 +1,8 @@
+//
+//  Author: Taylor Bauer
+//  Date: October 7, 2019
+//
+
 #include "Menu.h"
 #include "BinarySearchTree.h"
 #include <iostream>
@@ -34,6 +39,19 @@ void Menu::run() {
             cin >> insertion;
             m_tree.insert(insertion);
             cout << "The character \'" << insertion << "\' successfully inserted!\n";
+        }
+        else if (selection == 2) {
+            char deletion = ' ';
+            cout << "What value would you like to delete (single character only please)? ";
+            cin >> deletion;
+            if (!m_tree.search(deletion)) {
+                cout << "Unable to find a node with the character \'" << deletion << "\'.\n"; 
+            }
+            else {
+                m_tree.remove(deletion);
+                cout << "The character \'" << deletion << "\' was successfully removed.\n";
+            }
+
         }
         else if (selection == 3) {
             char searchKey = ' ';
